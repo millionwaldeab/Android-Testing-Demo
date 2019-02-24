@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.asmarasoftwaresolutions.domain_layer.computations.ComputationsInterface;
 import com.asmarasoftwaresolutions.domain_layer.computations.ComputationsInterfaceImpl;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mUserInput;
     private Button mShow;
     private Spinner mCountriesList, mUnitsList;
-    private ComputationsInterfaceImpl mComputationsInterfaceImpl;
+    private ComputationsInterface mComputationsInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mShow = findViewById(R.id.b_show);
         mCountriesList = findViewById(R.id.s_countries);
         mUnitsList = findViewById(R.id.s_measurement_units);
-        mComputationsInterfaceImpl = new ComputationsInterfaceImpl();
+        mComputationsInterface = new ComputationsInterfaceImpl();
         mShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,24 +48,24 @@ public class MainActivity extends AppCompatActivity {
         //convert to imperial system
         if (mCountriesList.getSelectedItemPosition() == 0 || mCountriesList.getSelectedItemPosition() == 5) {
             if (mUnitsList.getSelectedItemPosition() == 0) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.centimeterToInches(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.centimeterToInches(arg)));
             }
             if (mUnitsList.getSelectedItemPosition() == 1) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.kgToLb(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.kgToLb(arg)));
             }
             if (mUnitsList.getSelectedItemPosition() == 2) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.celsiusToFrenheit(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.celsiusToFrenheit(arg)));
             }
         } else {
             //convert to metric system
             if (mUnitsList.getSelectedItemPosition() == 0) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.inchesToCentimeter(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.inchesToCentimeter(arg)));
             }
             if (mUnitsList.getSelectedItemPosition() == 1) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.lbToKg(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.lbToKg(arg)));
             }
             if (mUnitsList.getSelectedItemPosition() == 2) {
-                mResult.setText(String.valueOf(mComputationsInterfaceImpl.frenheitToCelcius(arg)));
+                mResult.setText(String.valueOf(mComputationsInterface.frenheitToCelcius(arg)));
             }
         }
     }

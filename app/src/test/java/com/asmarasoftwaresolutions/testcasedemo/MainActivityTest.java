@@ -35,13 +35,13 @@ public class MainActivityTest {
     @Test
     public void testAllElements() throws Exception{
         Assert.assertNotNull(mActivity);
-        //Assert.assertEquals(mActivity.findViewById(R.string.app_name).toString(), "Test Case Demo");
-        //Assert.assertNotNull(mActivity.findViewById(R.string.convert));
-        //Assert.assertNotNull(mActivity.findViewById(R.string.country_prompt));
-        //Assert.assertNotNull(mActivity.findViewById(R.string.input_description));
-        //Assert.assertNotNull(mActivity.findViewById(R.string.no_input_submitted_error));
-        //Assert.assertNotNull(mActivity.findViewById(R.string.result));
-        //Assert.assertNotNull(mActivity.findViewById(R.string.unit_prompt));
+        Assert.assertEquals(mActivity.getResources().getString(R.string.app_name), "Test Case Demo");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.convert), "SHOW");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.country_prompt), "Choose a country");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.input_description), "Enter the number you would like to convert");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.no_input_submitted_error), "Please enter valid number.");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.result), "Result");
+        Assert.assertEquals(mActivity.getResources().getString(R.string.unit_prompt), "Choose a country");
         Assert.assertTrue(mActivity.findViewById(R.id.b_show).hasOnClickListeners());
         mActivity.findViewById(R.id.b_show).performClick();
         Assert.assertNotNull(mActivity.findViewById(R.id.s_measurement_units));
