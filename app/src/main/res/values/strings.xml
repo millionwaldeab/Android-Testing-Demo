@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Test Case Demo</string>
+    <string name="result">Result</string>
+    <string name="input_description">Enter the number you would like to convert</string>
+    <string name="frn_to_cel">Frenh to Celcius</string>
+    <string name="cel_to_frn">Celcius to Fren</string>
+    <string name="inch_to_cent">Inch to Centimeter</string>
+    <string name="cent_to_inch">Centimeter to inch</string>
+
+    <!--Spinner display string contents-->
+    <string name="country_prompt">Choose a country</string>
+    <string-array name="countries">
+        <item>America</item>
+        <item>Australia</item>
+        <item>Brazil</item>
+        <item>Canada</item>
+        <item>Congo</item>
+        <item>England</item>
+    </string-array>
+
+    <!--Spinner display string contents-->
+    <string name="unit_prompt">Choose a country</string>
+    <string name="convert">SHOW</string>
+    <string name="no_input_submitted_error">Please enter valid number.</string>
+    <string-array name="units">
+        <item>Length</item>
+        <item>Weight</item>
+        <item>Temperature</item>
+    </string-array>
+</resources>
