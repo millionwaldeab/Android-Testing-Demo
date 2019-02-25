@@ -5,20 +5,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ConstantTest {
-    @Mock
-    Constant mConstant;
 
-    Constant.Country mCountry;
+    private Constant mConstant;
 
     @Before
     public void setUp(){
-        MockitoAnnotations.initMocks(mConstant);
+        MockitoAnnotations.initMocks(this);
+        mConstant = Mockito.spy(Constant.class);
     }
 
     @After
