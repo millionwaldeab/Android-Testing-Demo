@@ -1,11 +1,8 @@
 package com.asmarasoftwaresolutions.testcasedemo;
 
-import android.app.ActionBar;
+
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
