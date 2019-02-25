@@ -1,9 +1,12 @@
 package com.asmarasoftwaresolutions.testcasedemo;
 
 import android.app.ActionBar;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,13 +15,13 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowToast;
-import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class)
 public class MainActivityTest {
 
     private MainActivity mActivity;
+    private View mView;
 
     @Before
     public void setUp() throws Exception {
@@ -26,7 +29,14 @@ public class MainActivityTest {
                 .create()
                 .resume()
                 .get();
+        mView = LayoutInflater.from(mActivity).inflate(R.layout.activity_main, null);
     }
+
+    @After
+    public void tearDown() throws Exception {
+        mActivity = null;
+    }
+
 
     /**
      * This test case tests if the views are present and are performing their tasks
@@ -44,6 +54,7 @@ public class MainActivityTest {
         Assert.assertEquals(mActivity.getResources().getString(R.string.unit_prompt), "Choose a country");
         Assert.assertTrue(mActivity.findViewById(R.id.b_show).hasOnClickListeners());
         mActivity.findViewById(R.id.b_show).performClick();
+        Assert.assertNotNull(mView); //this tastes the layout
         Assert.assertNotNull(mActivity.findViewById(R.id.s_measurement_units));
         Assert.assertNotNull(mActivity.findViewById(R.id.s_countries));
         Assert.assertNotNull(mActivity.findViewById(R.id.et_user_input));
@@ -71,6 +82,7 @@ public class MainActivityTest {
         Assert.assertEquals(descHeight, (mActivity.findViewById(R.id.tv_input_description).getLayoutParams()).height);
         Assert.assertEquals(btnWidth, (mActivity.findViewById(R.id.b_show).getLayoutParams()).width);
         Assert.assertEquals(btnHeight, (mActivity.findViewById(R.id.b_show).getLayoutParams()).height);
-        //Assert.assertThat(ShadowToast.getTextOfLatestToast(), equalTo("Please enter valid number."));
+        //this tests the Toast message
+        Assert.assertEquals("Please enter valid number.", ShadowToast.getTextOfLatestToast());
     }
 }
