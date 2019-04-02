@@ -1,6 +1,7 @@
 package com.asmarasoftwaresolutions.testcasedemo;
 
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import org.junit.After;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowToast;
 
@@ -81,5 +83,7 @@ public class MainActivityTest {
         Assert.assertEquals(btnHeight, (mActivity.findViewById(R.id.b_show).getLayoutParams()).height);
         //this tests the Toast message
         Assert.assertEquals("Please enter valid number.", ShadowToast.getTextOfLatestToast());
+
+        Shadows.shadowOf(Color.valueOf(R.color.colorAccent));
     }
 }
